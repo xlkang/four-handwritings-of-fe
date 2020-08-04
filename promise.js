@@ -118,23 +118,25 @@ function nextTick(fn) {
     }
 }
 
-const promise1 = new Promise((resolve, reject)=>{
-    console.log('cb')
-    resolve(2)
-}).then(res=> {
-    console.log(1)
-}).then(res=> {
-    console.log(res)
-    console.log(2)
-}).then(res=> {
-    console.log(3)
-}).then(res=> {
-    console.log(4)
-}).catch(err=>{
-    console.log(err)
-}).then(res => {
-    console.log(1)
-})
+
+// 测试
+// const promise1 = new Promise((resolve, reject)=>{
+//     console.log('cb')
+//     resolve(2)
+// }).then(res=> {
+//     console.log(1)
+// }).then(res=> {
+//     console.log(res)
+//     console.log(2)
+// }).then(res=> {
+//     console.log(3)
+// }).then(res=> {
+//     console.log(4)
+// }).catch(err=>{
+//     console.log(err)
+// }).then(res => {
+//     console.log(1)
+// })
 
 // const promise2 = new Promise2((resolve, reject)=>{
 //     console.log('cb')
@@ -154,7 +156,7 @@ const promise1 = new Promise((resolve, reject)=>{
 //     console.log(1)
 // })
 
-console.log(promise1)
+// console.log(promise1)
 // console.log(promise2)
 
 // const promise2 = Promise.resolve('aaa')

@@ -13,4 +13,6 @@ yarn start  # 运行browser-sync启动http server
 
 ## 目录
 
-1. [promise](https://github.com/xlkang/four-handwritings-of-fe/blob/master/promise.js)
+1. [bind](https://github.com/xlkang/four-handwritings-of-fe/blob/master/bind.js)
+2. [promise](https://github.com/xlkang/four-handwritings-of-fe/blob/master/promise.js)
+
