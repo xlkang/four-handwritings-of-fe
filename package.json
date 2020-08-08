@@ -5,9 +5,18 @@
   "author": "xlkang",
   "license": "MIT",
   "scripts": {
-    "start": "browser-sync --files '**/*'"
+    "start": "browser-sync --files '**/*'",
+    "test": "mocha test/*.test.js --require @babel/register",
+    "test-asnync": "mocha test/*.test.js --require @babel/register -t 10000 -s 1000",
+    "test-reporter": "mocha test/*.test.js --require @babel/register -t 10000 -s 1000 --reporter mochawesome --recursive"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.7"
+    "browser-sync": "^2.26.7",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.1",
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/register": "^7.10.5",
+    "mochawesome": "^6.1.1"
   }
 }

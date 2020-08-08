@@ -6,7 +6,7 @@
  */
 
 // es5实现
-Function.prototype.myBind = function (context) {
+Function.prototype.myBindES5 = function (context) {
     var slice = Array.prototype.slice
     var args1 = slice.call(arguments, 1)
     var fn = this;
@@ -20,17 +20,17 @@ Function.prototype.myBind = function (context) {
     }
 }
 
-// 测试
-var name = '我是全局的name'
+// // 测试
+// var name = '我是全局的name'
 
-var o = {
-    name: '我是obj的name'
-}
-function test() {
-    var args = Array.prototype.slice.call(arguments, 0)
-    console.log(this.name)
-    console.log('args', args)
-}
+// var o = {
+//     name: '我是obj的name'
+// }
+// function test() {
+//     var args = Array.prototype.slice.call(arguments, 0)
+//     console.log(this.name)
+//     console.log('args', args)
+// }
 
-var bindedTest = test.myBind(o, 1111, 2222)
-bindedTest(3333)
+// var bindedTest = test.myBindES5(o, 1111, 2222)
+// bindedTest(3333)
