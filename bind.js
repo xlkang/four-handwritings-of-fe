@@ -18,3 +18,14 @@ Function.prototype.myBindES5 = function (context) {
         return fn.apply(context, args2.concat(args1))
     }
 }
+
+// es6实现
+Function.prototype.myBindES6 = function (context, ...args1) {
+    var fn = this;
+    if(typeof fn !== "function") {
+        throw new ReferenceError("cannot bind non_function");
+    }
+    return function (...args2){
+        return fn.apply(context, [...args2, ...args1])
+    }
+}
