@@ -7,15 +7,18 @@
 
 // es5实现
 Function.prototype.myBind = function (context) {
-    var args1 = Array.prototype.slice.call(arguments, 1)
+    var slice = Array.prototype.slice
+    var args1 = slice.call(arguments, 1)
     var fn = this;
-
+    // 注意判断边界条件
+    if(typeof fn !== "function") {
+        throw new Error("cannot bind non_function");
+    }
     return function (){
-        var args2 = Array.prototype.slice.call(arguments, 0)
+        var args2 = slice.call(arguments, 0)
         fn.apply(context, args2.concat(args1))
     }
 }
-
 
 // 测试
 var name = '我是全局的name'
