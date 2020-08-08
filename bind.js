@@ -10,27 +10,11 @@ Function.prototype.myBindES5 = function (context) {
     var slice = Array.prototype.slice
     var args1 = slice.call(arguments, 1)
     var fn = this;
-    // 注意判断边界条件
     if(typeof fn !== "function") {
-        throw new Error("cannot bind non_function");
+        throw new ReferenceError("cannot bind non_function");
     }
     return function (){
         var args2 = slice.call(arguments, 0)
-        fn.apply(context, args2.concat(args1))
+        return fn.apply(context, args2.concat(args1))
     }
 }
-
-// // 测试
-// var name = '我是全局的name'
-
-// var o = {
-//     name: '我是obj的name'
-// }
-// function test() {
-//     var args = Array.prototype.slice.call(arguments, 0)
-//     console.log(this.name)
-//     console.log('args', args)
-// }
-
-// var bindedTest = test.myBindES5(o, 1111, 2222)
-// bindedTest(3333)

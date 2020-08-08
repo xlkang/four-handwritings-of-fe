@@ -9,6 +9,7 @@
 ```shell
 yarn        # 安装依赖
 yarn start  # 运行browser-sync启动http server
+yarn test  # 通过mocha运行测试
 ```
 
 ## 目录
