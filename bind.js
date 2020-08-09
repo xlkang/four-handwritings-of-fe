@@ -29,3 +29,26 @@ Function.prototype.myBindES6 = function (context, ...args1) {
         return fn.apply(context, [...args2, ...args1])
     }
 }
+
+// 高级：支持 new，例如 new (funcA.bind(thisArg, args))
+Function.prototype.myBindES6SupprotNew = function (context) {
+    var slice = Array.prototype.slice
+    var args1 = slice.call(arguments, 1)
+    var fn = this;
+    if(typeof fn !== "function") {
+        throw new ReferenceError("cannot bind non_function");
+    }
+    function resultFn (){
+        var args2 = slice.call(arguments, 0)
+        
+        return fn.apply(
+            // 判断构造函数调用
+            resultFn.prototype.isPrototypeOf(this) ? this : context, 
+            args2.concat(args1)
+        )
+    }
+    // 让new调用创建实例的原型，指向fn.prototype
+    resultFn.prototype = fn.prototype
+
+    return resultFn
+}

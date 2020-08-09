@@ -2,11 +2,12 @@ import { expect } from 'chai'
 import '../bind'
 
 describe('test bind.js', () => {
-    describeBind('myBindES5')
-    describeBind('myBindES6')
+    testBind('myBindES5')
+    testBind('myBindES6')
+    testBind('myBindES6SupprotNew', true)
 })
 
-function describeBind (fnName) {
+function testBind (fnName, supportNew) {
     // 测试数据
     const ASSIGN_CONTEXT_NAME = '我是obj的name'
 
@@ -54,5 +55,22 @@ function describeBind (fnName) {
             const expectArgs = [111].concat(checkToBindArgs)
             expect(bindedTestArgs(111)).to.deep.equal(expectArgs)
         })
+
+        if(supportNew) {
+            function testNewContext() {
+                this.a = 1
+                return this
+            }
+            const bindedNewContext = testNewContext[fnName](context)
+            const o = new bindedNewContext()
+            
+            it('bind后的函数经过new调用时, this指向新的实例', ()=> {
+                expect(o).to.have.ownProperty('a')
+            })
+
+            it('bind后的函数经过new调用后创建的实例, 原型指向bind前的函数的原型对象', ()=> {
+                expect(o).to.be.an.instanceof(testNewContext);
+            })
+        }
     })
 }
