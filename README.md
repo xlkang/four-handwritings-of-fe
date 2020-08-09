@@ -1,8 +1,7 @@
 # four-handwritings-of-fe
-前端四大手写
 
 ## 介绍
-前端领域，以手写bind、手写深拷贝、手写 EventHub（发布-订阅）、手写 Promise最为常见，本项目即是对四大手写的一一实现。
+一一实现bind、深拷贝、EventHub、Promise/A+。
 
 ## 运行
 
