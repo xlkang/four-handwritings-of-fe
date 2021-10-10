@@ -33,20 +33,6 @@ function deepClone (target) {
   return cloneObj
 }
 
-const ori = {
-  a: 1,
-  b: {
-    c: 1,
-    d: {
-      f: "aaaa",
-      g: function noop() {},
-      h: undefined,
-      i: null,
-    }
-  }
+export {
+  deepClone,
 }
-
-const copy = deepClone(ori)
-copy.b.d.f = "bbbb"
-console.log("ori===", ori)
-console.log("copy===", copy)
